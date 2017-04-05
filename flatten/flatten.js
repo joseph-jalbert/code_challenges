@@ -3,17 +3,17 @@ input = ([1, 2, 3, [4, 5, [6], [ ] ] ]);
 
 function flatten(input) {
   output = [];
-  function typeCheck(input) {
+  function nestCheck(input) {
     input.map(function(e) {
       if (e.constructor === Array) {
-        typeCheck(e);
+        nestCheck(e);
         return;
       }
       output.push(e);
     })
   }
-  typeCheck(input);
+  nestCheck(input);
   return output;
 }
 
-console.log(flatten([4,5,['fo','foo',[4,5]]]));
+console.log(flatten(input));
